@@ -35,15 +35,15 @@ namespace ScheduleDemo_1734
                 .WithIdentity("job1", "group1")
                 .Build();
             ITrigger trigger1 = TriggerBuilder.Create()
-                .WithIdentity("trigger1", "group1")
+                .WithIdentity("trigger1","group1")
                 .StartNow()
-                .WithSimpleSchedule(x => x
+                .WithSimpleSchedule(x => x  
                 .WithIntervalInSeconds(intervaSeconds)
                 .RepeatForever())
                 .Build();
 
-            await scheduler.ScheduleJob(job1, trigger1);
-
+            //根據trigger1的規則來觸發並執行job1
+            await scheduler.ScheduleJob(job1 , trigger1);
 
             // 第二個工作：在指定時間執行一次
             IJobDetail job2 = JobBuilder.Create<PrintJob2>()
@@ -55,6 +55,7 @@ namespace ScheduleDemo_1734
                 .WithIdentity("trigger2", "group2")
                 .StartAt(runTime)
                 .Build();
+
 
             await scheduler.ScheduleJob(job2, trigger2);
 
