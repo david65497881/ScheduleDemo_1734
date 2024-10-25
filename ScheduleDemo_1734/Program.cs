@@ -10,8 +10,9 @@ using Quartz.Impl;
 
 namespace ScheduleDemo_1734
 {
-    internal class Program
+    public class Program
     {
+        //anync標註為非同步
         static async Task Main(string[] args)
         {
             Console.WriteLine("請輸入間格秒數");
@@ -42,7 +43,7 @@ namespace ScheduleDemo_1734
                 .RepeatForever())
                 .Build();
 
-            //根據trigger1的規則來觸發並執行job1
+            //await等待非同步完成後執行。根據trigger1的規則來觸發並執行job1
             await scheduler.ScheduleJob(job1 , trigger1);
 
             // 第二個工作：在指定時間執行一次
