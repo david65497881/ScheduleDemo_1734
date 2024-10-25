@@ -16,16 +16,59 @@ namespace ScheduleDemo_1734
         //anync標註為非同步
         static async Task Main(string[] args)
         {
-            Console.WriteLine("請輸入間格秒數");
-            int intervaSeconds = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("請輸入指定的時間（HH:mm）：");
-            string inputTime = Console.ReadLine();
-            if (!TimeSpan.TryParse(inputTime, out TimeSpan specifiedTime))
+
+            int intervaSeconds = 0;
+            TimeSpan specifiedTime = TimeSpan.Zero;
+            bool isValid = false;
+            bool isValidTime = false;   
+
+            //while (!isValid)
+            //{
+            //    try
+            //    {
+            //        Console.WriteLine("請輸入間格秒數");
+            //        intervaSeconds = int.Parse(Console.ReadLine());
+            //    }
+            //    catch (FormatException)
+            //    {
+            //        Console.WriteLine("輸入無效，請輸入有效的整數值。");
+            //    }
+            //}
+            
+            //使用while確保輸入的秒數正確
+            while (!isValid) 
             {
-                Console.WriteLine("輸入的時間格式無效。");
-                return;
+                Console.WriteLine("請輸入整數的間格秒數");
+                string input = Console.ReadLine();  
+                if (int.TryParse(input,out intervaSeconds))
+                {
+                    isValid = true;
+                }
+                else 
+                {
+                    Console.WriteLine("請輸入有效的時間(整數)");
+                }
             }
+
+            //使用while確保輸入的秒數正確
+            while (!isValidTime) 
+            {
+                Console.WriteLine("請輸入指定的時間（HH:mm）：");
+                string inputTime = Console.ReadLine();
+                if (TimeSpan.TryParseExact(inputTime, "hh\\:mm", null, out specifiedTime))
+                {
+                    isValidTime = true;
+                }
+                else 
+                {
+                    Console.WriteLine("請輸入有效的時間(例如13:34)");
+                }
+            }
+            
+            
+            
+
 
             //建立排成
             StdSchedulerFactory factory = new StdSchedulerFactory();
