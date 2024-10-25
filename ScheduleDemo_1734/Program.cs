@@ -54,7 +54,7 @@ namespace ScheduleDemo_1734
             //使用while確保輸入的秒數正確
             while (!isValidTime) 
             {
-                Console.WriteLine("請輸入指定的時間（HH:mm）：");
+                Console.WriteLine("請輸入你想指定的時間（HH:mm）：");
                 string inputTime = Console.ReadLine();
                 if (TimeSpan.TryParseExact(inputTime, "hh\\:mm", null, out specifiedTime))
                 {
