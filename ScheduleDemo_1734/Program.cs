@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Quartz;
 using Quartz.Impl;
+using ScheduleDemo_1734.JobClass;
 
 namespace ScheduleDemo_1734
 {
@@ -65,28 +66,6 @@ namespace ScheduleDemo_1734
             Console.ReadKey();
         }
 
-        /// <summary>
-        /// N秒打印一次
-        /// </summary>
-        public class PrintJob : IJob
-        {
-            public Task Execute(IJobExecutionContext context)
-            {
-                Console.WriteLine($"第一個排程執行中(N秒打印一次)：{DateTime.Now}");
-                return Task.CompletedTask;
-            }
-        }
-
-        /// <summary>
-        /// 指定時間打印一次
-        /// </summary>
-        public class PrintJob2 : IJob
-        {
-            public Task Execute(IJobExecutionContext context)
-            {
-                Console.WriteLine($"第二個排程執行中(指定時間打印)：{DateTime.Now}");
-                return Task.CompletedTask;
-            }
-        }
+        
     }
 }
