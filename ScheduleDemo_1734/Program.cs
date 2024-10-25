@@ -65,6 +65,9 @@ namespace ScheduleDemo_1734
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// N秒打印一次
+        /// </summary>
         public class PrintJob : IJob
         {
             public Task Execute(IJobExecutionContext context)
@@ -74,6 +77,9 @@ namespace ScheduleDemo_1734
             }
         }
 
+        /// <summary>
+        /// 指定時間打印一次
+        /// </summary>
         public class PrintJob2 : IJob
         {
             public Task Execute(IJobExecutionContext context)
